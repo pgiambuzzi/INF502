@@ -83,7 +83,7 @@ First, a commit was added to the master branch. In the math branch, a separate c
 3. Use `git diff BRANCH_NAME` to view the differences from a branch and the current branch. Summarize the difference from master to the other branch.
 
 ```
-Compared to the master branch, it appears that nine lines were removed from and one line was added to b/A.py, and one line was added to b/B.py.
+Compared to the master branch, it appears that nine lines were removed from and one line was added to b/A.py. In addition, one line was added to b/B.py.
 
 diff --git a/A.py b/A.py
 index 0afa98c..dc1e9bd 100644
@@ -166,7 +166,7 @@ git merge --abort
    
 11. Now repeat item 9, but proceed with the manual merge (editing B.py). All implemented methods are needed. Explain your procedure.
 ```
-I changed the B.py files in both branches so that they matched, committed the chaanges using git commit -a -m, and then merged the branches using git merge math.
+I changed the B.py files in both branches using the nano function so that they matched, committed the changes using git commit -a -m, and then merged the branches using git merge math.
 
 ```
 
