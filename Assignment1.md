@@ -5,7 +5,7 @@
     - Use `git log --decorate` to explore the structure of commits.
 
 ```
-brach: master
+branch: master
 
 commits:
 
@@ -83,6 +83,8 @@ First, a commit was added to the master branch. In the math branch, a separate c
 3. Use `git diff BRANCH_NAME` to view the differences from a branch and the current branch. Summarize the difference from master to the other branch.
 
 ```
+Compared to the master branch, it appears that nine lines were removed from and one line was added to b/A.py, and one line was added to b/B.py.
+
 diff --git a/A.py b/A.py
 index 0afa98c..dc1e9bd 100644
 --- a/A.py
@@ -112,7 +114,8 @@ index e69de29..c63f94c 100644
 4. Write a command sequence to merge the non-master branch into `master`.
 
 ```
-
+git checkout master
+git merge math
 
 ```
 
@@ -120,54 +123,63 @@ index e69de29..c63f94c 100644
 5. Write a command (or sequence) to (i) create a new branch called `math` (from the `master`) and (ii) change to this branch.
 
 ```
-
-
+git checkout master
+git branch math
+git checkout math
 ```
    
 6. Edit B.py adding the following source code below the content you have there.
 ```
 print 'I know math, look:'
 print 2+2
+(added above lines to B.py file)
 ```
 
 7. Write a command (or sequence) to commit your changes.
 ```
-
-
+git commit -a -m 'for Q7'
 ```
 
 8. Change back to the `master` branch and change B.py adding the following source code (commit your change to `master`):
 ```
-print 'hello world!'
+git checkout master
+(added: print 'hello world!' to B.py)
+git commit -a -m 'for Q8'
 ```
 
 9. Write a command sequence to merge the `math` branch into `master` and describe what happened.
 ```
+git merge math
 
+Gives me the following message: 
+"CONFLICT (content): Merge conflict in B.py
+Automatic merge failed; fix conflicts and then commit the result."
 
+This occurred because different changes were made to the same file in separate branches by different people.
 ```
    
 10. Write a set of commands to abort the merge.
 ```
-
+git merge --abort
 
 ```
    
 11. Now repeat item 9, but proceed with the manual merge (editing B.py). All implemented methods are needed. Explain your procedure.
 ```
-
+I changed the B.py files in both branches so that they matched, committed the chaanges using git commit -a -m, and then merged the branches using git merge math.
 
 ```
 
 12. Write a command (or set of commands) to proceed with the merge and make `master` branch up-to-date.
 ```
-
+git checkout master
+git merge math
 
 ```
 
 13. Complete Part 2. Then, come back here and answer the following:
 Report your experience of submitting the Part 2. Please, include the steps you followed, the commands you used, and the hurdles you faced (within the file you created for the **Part 1**).
 ```
-
+should i have donw this in git?
 
 ```
