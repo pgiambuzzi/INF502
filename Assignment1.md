@@ -180,6 +180,6 @@ git merge math
 13. Complete Part 2. Then, come back here and answer the following:
 Report your experience of submitting the Part 2. Please, include the steps you followed, the commands you used, and the hurdles you faced (within the file you created for the **Part 1**).
 ```
-should i have donw this in git?
+I Clicked the fork button, renamed the fork, and then titled my markdown file in the students folder. Once I committed my changes to the file and pushed it to my repository, I went to my fork and clicked pull request. I made sure my fork was the comparison and Ana Chaves' INF502 repository was the main. I then left a title for the pull request. One hurdle I faced was after I made the first commit of my markdown file, I realized the formatting was not how I wanted it to be.  I then aditted the file's fomat and comitted those changes before doing the pull request.
 
 ```
