@@ -1,3 +1,18 @@
+# Assignment 2: Python Basics
+
+* **INDIVIDUAL ASSIGNMENT**
+* **Deadline**: Sept-27th 11:59PM
+* **Value**: 100 points counted towards Homework category
+* 
+* **How to submit**: In your GitHub repository called *INF502* (same used for the Assignment 1) create a file called *"Assignment2.md"* with the following content:
+  1. The problem's specification (as provided below in this file);
+  2. A solution for each problem (in Python). Use the tag ```code``` to write the code along with the explanation.
+  3. Explanation about the code (comments on variables and their meanings, explanation on why you used one or another approach, logical reasoning). The explanation can be either comments inside the code or text as a response to the problem in the markdown file.
+  4. Create a folder called `code` and add the Python files (.py) with the solution. Link these files in your answer for each problem.
+  Please remember to check if you invited me to see your repository (do so if you did not do for Assignment 1). I will evaluate the latest commit before 11:59PM (Sept-27th)
+
+## Problems
+
 **1. Write a function with the following signature:** `pythagoreanTheorem(length_a, length_b)`.
 
 The function returns the length of the hypotenuse assuming that `length_a` and `length_b` are the lengths of the two legs of a right triangle (the legs that form the triangle's right angle). Hint: the `math` module might have useful functions to use.
