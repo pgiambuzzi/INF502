@@ -22,13 +22,16 @@ For example:
 import math
 
 def pythagoreanTheorem(length_a, length_b):
+   #I felt this was the most straightforward way of making this function, simply printing the result of hypotenuse calculation: c=sqrt(a^2+b^2)
    print(math.sqrt(length_a**2 + length_b**2))
 
 pythagoreanTheorem(2,8)
-
+8.246211251235321
 pythagoreanTheorem(3,9)
-
+9.486832980505138
 pythagoreanTheorem(5,6)
+7.810249675906654
+
 ```
 In your solution markdown, please provide: a link to the .py file, a commented code, the output of a few examples (3-4).
 
