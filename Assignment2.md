@@ -39,8 +39,27 @@ The function assumes that `list_in` is a list of integers, and returns a new lis
 For example:
 
 ```python
-print(list_mangler([1, 2, 3, 4]))
+def list_mangler(list_in):
+    #creating an empty list for our outputs
+    list_new = []
+    #creating a for loop to run through our original list
+    for item in list_in:
+    #each even number in the given list is multiplied by 2
+        if item % 2 == 0:
+            list_new.append(item*2)
+    #each odd number in the given list is multiplied by 3
+        else:
+            list_new.append(item*3)
+    #and the empty list is populated with our multiplication outputs
+    print(list_new)
+    
+#examples:
+list_mangler([1, 2, 3, 4])
 [3, 4, 9, 8]
+list_mangler([5, 6, 7, 8])
+[15, 12, 21, 16]
+list_mangler([9, 10, 11, 12])
+[27, 20, 33, 24]
 ```
 In your solution markdown, please provide: a link to the .py file, a commented code, the output of a few examples (3-4).
 
