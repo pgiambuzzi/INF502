@@ -22,9 +22,13 @@ For example:
 import math
 
 def pythagoreanTheorem(length_a, length_b):
-   print(math.sqrt(length_a)** + (length_b**))
+   print(math.sqrt(length_a**2 + length_b**2))
 
-pythagoreanTheorem(2, 2)
+pythagoreanTheorem(2,8)
+
+pythagoreanTheorem(3,9)
+
+pythagoreanTheorem(5,6)
 ```
 In your solution markdown, please provide: a link to the .py file, a commented code, the output of a few examples (3-4).
 
