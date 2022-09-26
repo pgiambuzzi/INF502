@@ -41,6 +41,8 @@ In your solution markdown, please provide: a link to the .py file, a commented c
 
 The function assumes that `list_in` is a list of integers, and returns a new list containing transformed elements of `list_in`. If the element is even, it's doubled. If the element is odd, it's tripled.
 
+[listmangler.py](https://github.com/pgiambuzzi/INF502/blob/main/code/listmangler.py)
+
 ```python
 def list_mangler(list_in):
     #creating an empty list for our outputs
