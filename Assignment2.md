@@ -17,7 +17,6 @@
 
 The function returns the length of the hypotenuse assuming that `length_a` and `length_b` are the lengths of the two legs of a right triangle (the legs that form the triangle's right angle). Hint: the `math` module might have useful functions to use.
 
-For example:
 ```python
 import math
 
@@ -25,6 +24,7 @@ def pythagoreanTheorem(length_a, length_b):
    #I felt this was the most straightforward way of making this function, simply printing the result of hypotenuse calculation: c=sqrt(a^2+b^2)
    print(math.sqrt(length_a**2 + length_b**2))
 
+#examples:
 pythagoreanTheorem(2,8)
 8.246211251235321
 pythagoreanTheorem(3,9)
@@ -38,8 +38,6 @@ In your solution markdown, please provide: a link to the .py file, a commented c
 **2. Write a function with the following signature:** `list_mangler(list_in)`.
 
 The function assumes that `list_in` is a list of integers, and returns a new list containing transformed elements of `list_in`. If the element is even, it's doubled. If the element is odd, it's tripled.
-
-For example:
 
 ```python
 def list_mangler(list_in):
