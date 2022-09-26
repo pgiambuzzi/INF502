@@ -18,6 +18,8 @@
 The function returns the length of the hypotenuse assuming that `length_a` and `length_b` are the lengths of the two legs of a right triangle (the legs that form the triangle's right angle). Hint: the `math` module might have useful functions to use.
 
 ```python
+#link to .py file: https://github.com/pgiambuzzi/INF502/blob/main/code/pythagoreanTheorem.py
+
 import math
 
 def pythagoreanTheorem(length_a, length_b):
