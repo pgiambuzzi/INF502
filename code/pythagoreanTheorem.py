@@ -1,4 +1,4 @@
-```python
+```
 import math
 
 def pythagoreanTheorem(length_a, length_b):
