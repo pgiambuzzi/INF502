@@ -19,8 +19,12 @@ The function returns the length of the hypotenuse assuming that `length_a` and `
 
 For example:
 ```python
-print(pythagoreanTheorem(2, 2))
-2.8284271247461903
+import math
+
+def pythagoreanTheorem(length_a, length_b):
+   print(math.sqrt(length_a)** + (length_b**))
+
+pythagoreanTheorem(2, 2)
 ```
 In your solution markdown, please provide: a link to the .py file, a commented code, the output of a few examples (3-4).
 
