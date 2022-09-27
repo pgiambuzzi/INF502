@@ -103,13 +103,21 @@ In your solution markdown, please provide: a link to the .py file, a commented c
 
 The function accepts an input list of integers and returns a list with two sublists. The first sublist contains all even numbers in the input list and the second sublist contains all odd numbers.
 
-For example:
-```
-print(odd_even_filter([1, 2, 3, 4, 5, 6, 7, 8, 9]))
-[[2, 4, 6, 8], [1, 3, 5, 7, 9]]
-print(odd_even_filter([3, 9, 43, 7]))
-[[], [3, 9, 43, 7]]
-print(odd_even_filter([71, 39, 98, 79, 5, 89, 50, 90, 2, 56]))
-[[98, 50, 90, 2, 56], [71, 39, 79, 5, 89]]
+link:
+
+```python
+def odd_even_filter(numbers):
+    list_odd = [] #empty list for off numbers to go into
+    list_even = [] #empty list for even numbers to go into
+    for x in numbers: #for loop selects and adds even numbers to the empty list_even
+        if x % 2 == 0:
+            list_even.append(x)
+        else:
+            list_odd.append(x) #then selects and adds odd numbers to the empty list_odd
+    print(list_even, list_odd) #then we print the two new lists side by side
+
+#examples:
+odd_even_filter([1, 3, 4, 6, 2, 5, 4, 7])
+[4, 6, 2, 4] [1, 3, 5, 7]
 ```
 In your solution markdown, please provide: a link to the .py file, a commented code, the output of a few examples (3-4).
