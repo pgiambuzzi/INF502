@@ -67,7 +67,7 @@ In your solution markdown, please provide: a link to the .py file, a commented c
 
 The function accepts a list `grades_in` containing integer grades, drops the `to_drop` lowest grades (so, for `to_drop` equal to 2, the function should drop the 2 lowest grades), calculates the average of the grades left, and returns the letter grade this average corresponds to according to the letter grade scale for this course.
 
-link: [grad_calc.py](https://github.com/pgiambuzzi/INF502/blob/main/code/grade_calc.py)
+link: [grade_calc.py](https://github.com/pgiambuzzi/INF502/blob/main/code/grade_calc.py)
 
 ```python
 def grade_calc(grades_in, to_drop):
