@@ -112,15 +112,13 @@ def odd_even_filter(numbers):
     for x in numbers: #for loop selects and adds even numbers to the empty list_even
         if x % 2 == 0:
             list_even.append(x)
-        elif x % 2 != 0:
-            list_odd.append(x) #then selects and adds odd numbers to the empty list_odd
         else:
-            print("[]") #if no even or no odd numbers are provided, the function will print an empty list
-    print(list_even, list_odd) #then we print the two new lists side by side
+            list_odd.append(x) #then selects and adds odd numbers to the empty list_odd
+    return(list_even, list_odd) #then we return a list of lists, the two new lists are side by side
 
 #examples:
 odd_even_filter([1, 3, 4, 6, 2, 5, 4, 7])
-[4, 6, 2, 4] [1, 3, 5, 7]
+[[4, 6, 2, 4] [1, 3, 5, 7]]
 odd_even_filter([57, 35, 34, 287, 978, 888, 9, 203])
 [34, 978, 888] [57, 35, 287, 9, 203]
 odd_even_filter([7, 5, 3, 35, 67])
