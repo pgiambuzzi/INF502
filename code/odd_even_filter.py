@@ -6,4 +6,4 @@ def odd_even_filter(numbers):
             list_even.append(x)
         else:
             list_odd.append(x) #then selects and adds odd numbers to the empty list_odd
-    print(list_even, list_odd) #then we print the two new lists side by side
+    return(list_even, list_odd) #then we return a list of lists, the two new lists are side by side
