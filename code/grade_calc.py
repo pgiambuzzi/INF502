@@ -1,3 +1,5 @@
+from statistics import mean
+
 def grade_calc(grades_in, to_drop):
     for x in range(1,to_drop+1): #need to tell python how many times to determine a minimum. A new minimum will be determined after each tim a min is removed.
         min_grade = min(grades_in) #calculates the minimum grade
