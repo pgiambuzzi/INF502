@@ -23,8 +23,8 @@ LINK TO CODE FILE: [pythagoreanTheorem.py](https://github.com/pgiambuzzi/INF502/
 import math
 
 def pythagoreanTheorem(length_a, length_b):
-   #I felt this was the most straightforward way of making this function, simply printing the result of hypotenuse calculation: c=sqrt(a^2+b^2)
    print(math.sqrt(length_a**2 + length_b**2))
+   #I felt this was the most straightforward way of making this function, simply printing the result of hypotenuse calculation: c=sqrt(a^2+b^2)
 
 #examples:
 pythagoreanTheorem(2,8)
@@ -45,18 +45,13 @@ The function assumes that `list_in` is a list of integers, and returns a new lis
 
 ```python
 def list_mangler(list_in):
-    #creating an empty list for our outputs
-    list_new = []
-    #creating a for loop to run through our original list
-    for x in list_in:
-    #each even number in the given list is multiplied by 2
+    list_new = []     #creating an empty list for our outputs
+    for x in list_in: #creating a for loop to run through our original list
         if x % 2 == 0:
-            list_new.append(x*2)
-    #each odd number in the given list is multiplied by 3
+            list_new.append(x*2) #each even number in the given list is multiplied by 2
         else:
-            list_new.append(x*3)
-    #and the empty list is populated with our multiplication outputs
-    print(list_new)
+            list_new.append(x*3) #each odd number in the given list is multiplied by 3
+    print(list_new)  #and the empty list is populated with our multiplication outputs
     
 #examples:
 list_mangler([1, 2, 3, 4])
