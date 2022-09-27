@@ -41,7 +41,7 @@ In your solution markdown, please provide: a link to the .py file, a commented c
 
 The function assumes that `list_in` is a list of integers, and returns a new list containing transformed elements of `list_in`. If the element is even, it's doubled. If the element is odd, it's tripled.
 
-[listmangler.py](https://github.com/pgiambuzzi/INF502/blob/main/code/listmangler.py)
+link: [listmangler.py](https://github.com/pgiambuzzi/INF502/blob/main/code/listmangler.py)
 
 ```python
 def list_mangler(list_in):
@@ -67,7 +67,7 @@ In your solution markdown, please provide: a link to the .py file, a commented c
 
 The function accepts a list `grades_in` containing integer grades, drops the `to_drop` lowest grades (so, for `to_drop` equal to 2, the function should drop the 2 lowest grades), calculates the average of the grades left, and returns the letter grade this average corresponds to according to the letter grade scale for this course.
 
-For example:
+link: [grad_calc.py](https://github.com/pgiambuzzi/INF502/blob/main/code/grade_calc.py)
 
 ```python
 def grade_calc(grades_in, to_drop):
