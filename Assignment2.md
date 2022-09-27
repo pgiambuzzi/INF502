@@ -114,16 +114,16 @@ def odd_even_filter(numbers):
             list_even.append(x)
         else:
             list_odd.append(x) #then selects and adds odd numbers to the empty list_odd
-    return(list_even, list_odd) #then we return a list of lists, the two new lists are side by side
+    return[list_even, list_odd] #then we return a list of lists, the two new lists are side by side
 
 #examples:
 odd_even_filter([1, 3, 4, 6, 2, 5, 4, 7])
-[[4, 6, 2, 4] [1, 3, 5, 7]]
+[[4, 6, 2, 4], [1, 3, 5, 7]]
 odd_even_filter([57, 35, 34, 287, 978, 888, 9, 203])
-[34, 978, 888] [57, 35, 287, 9, 203]
+[[34, 978, 888], [57, 35, 287, 9, 203]]
 odd_even_filter([7, 5, 3, 35, 67])
-[] [7, 5, 3, 35, 67]
+[[], [7, 5, 3, 35, 67]]
 odd_even_filter([2, 4, 6])
-[2, 4, 6] []
+[[2, 4, 6], []]
 ```
 In your solution markdown, please provide: a link to the .py file, a commented code, the output of a few examples (3-4).
