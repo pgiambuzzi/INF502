@@ -54,25 +54,8 @@ def sequence2_to_list(file_2):
         sequence_2_list.append(sequence_2_read[x])
     return sequence_2_list
 
-# Function that calculates the max number of matches from a DNA strand in a .txt file, prints the resulting
-# shifted string of nucleotides, and preserves the original, un-shifted list of nucleotides.
 
-def max_score(shift):
-    list_1 = sequence1_to_list(file_1)
-    list_2 = sequence2_to_list(file_2)
-    for x in range(1, shift + 1):
-        list_1.insert(0, "-")
-        list_2.append("-")
-    print(''.join(list_1))
-    print(''.join(list_2))
-    score = 0
-    for x in range(len(list_1)):
-        if list_1[x] == list_2[x]:
-            score+=1
-    print(score)
-
-
-#The following function puts the score of each shift into a list and then selects the maximum score from the list.
+#The following function takes a two sequences files that the user has provided and puts the score of each shift into a list and then selects the maximum score from the list.
 #This function then indexes this list of scores and spits out the number of shifts that yields the highest score.
 #This function is also able to select 0 shifts as the optimal shift if that is the case.
 def max_score(shift):
