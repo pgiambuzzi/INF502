@@ -55,7 +55,7 @@ def sequence2_to_list(file_2):
     return sequence_2_list
 
 
-#The following function takes two sequences files that the user has provided and puts the score of each shift into a list and then selects the maximum score from the list.
+#The following function takes two sequence files that the user has provided, puts the score of each shift into a list, and then selects the maximum score from the list.
 #This function then indexes this list of scores and spits out the number of shifts that yields the highest score.
 #This function is also able to select 0 shifts as the optimal shift if that is the case.
 def max_score(shift):
