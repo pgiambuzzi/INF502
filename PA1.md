@@ -54,7 +54,6 @@ def sequence2_to_list(file_2):
         sequence_2_list.append(sequence_2_read[x])
     return sequence_2_list
 
-
 #The following function takes two sequence files that the user has provided, puts the score of each shift into a list, and then selects the maximum score from the list.
 #This function then indexes this list of scores and spits out the number of shifts that yields the highest score.
 #This function is also able to select 0 shifts as the optimal shift if that is the case.
@@ -64,6 +63,8 @@ def max_score(shift):
     max_list = [] #creating an empty list in which the score for each shift will be entered
     if isinstance(shift, float) == True: #tells the user that decimal (type: float) values cannot be supplied, only integers
         print("Decimal values cannot be accepted for 'shift'. Please supply a positive integer.")
+    elif shift >= len(list_1):  # rejects a shift input equal to or greater than the number of nucleotides in a given sequence because otherwise there will be no nucleotides lining up between sequences to compare
+        print("Number of shifts cannot equal or exceed the number of nucleotides in the sequence.")
     elif shift > 0: #when a number of shifts is provided, the following loop is run
         score = 0 #setting the initial score to 0, before any matches are calculated
         for x in range(len(list_1)): #calculating the number of base pair matches for ZERO shifts
@@ -99,17 +100,89 @@ def max_score(shift):
         print("Negative values cannot be accepted for 'shift'. Please supply a positive integer.")
 
 
-max_chain =
-
-shifted_dna =
-
+# The following function puts the chains of matching nucleotides into a list for each number of shifts
+# It then calculates the max chain resulting from each shift
+# The function then selects the highest maximum that have resulted from each shift up to the shift number requested
+# The function then indexes that highest maximum from the list, and spits out the number of shifts that yielded that highest maximum
+def max_chain(shift):
+    list_1 = sequence1_to_list(file_1)  # loading the user input file for sequence 1 into a list
+    list_2 = sequence2_to_list(file_2)  # loading the user input file for sequence 2 into a list
+    chains_list = []  # creating an empty list in which chains created for a single shift (or no shift) will be entered
+    max_chains = []  # creating a list that will store the max chain generated from each list
+    if isinstance(shift,float) == True:  # tells the user that decimal (type: float) values cannot be supplied, only integers
+        print("Decimal values cannot be accepted for 'shift'. Please supply a positive integer.")
+    elif shift >= len(list_1):  # rejects a shift input equal to or greater than the number of nucleotides in a given sequence because otherwise there will be no nucleotides lining up between sequences to compare
+        print("Number of shifts cannot equal or exceed the number of nucleotides in the sequence.")
+    elif shift > 0:  # when a number of shifts is provided, the following loop is run
+        score = 0  # setting the initial score to 0, before any matches are calculated
+        for x in range(len(list_1)):  # calculating the number of chain values for ZERO shifts
+            if list_1[x] == list_2[x]:  # pairs each element in the sequence list (nucleotides) and recognizes if there is a match
+                score += 1  # adds one point to the chain value for each base pair match between sequences
+                chains_list.append(score)  # adds the chain values to a list that will store all the chains resulting from a shift
+            else:
+                score=0  # if the loop runs into a pair of nucleotides that DO NOT match, the score is RESET to zero
+        max_chains.append(max(chains_list))  # adds the maximum chain obtained for ZERO shifts to an empty list which will soon be populated with more maximum chains corresponding to subsequent shifts
+        for x in range(1,shift + 1):  # adding a dash to the sequence for each number from 1 to the value entered for shift argument
+            list_1.insert(0, "-")  # dashes are added at the beginning for sequence 1
+            list_2.append("-")  # dashes are added at the end for sequence 2
+            score = 0  # setting the score back to 0 in preparation for the matches to be calculated following subsequent shifts
+            for x in range(1, len(list_1)):
+                if list_1[x] == list_2[x]:  # pairs each element in the sequence list (nucleotides) and recognizes if there is a match
+                    score += 1  # one point is added for each contiguous match between the two sequences
+                    chains_list.append(score)  # adds the chain values to a list that will store all the chains resulting from a shift
+                else:
+                    score = 0  # if the loop runs into a pair of nucleotides that DO NOT match, the score is RESET to zero
+            max_chains.append(max(chains_list))  # the chain value for each shift is saved to a list
+        print("Max chain:", max(max_chains))  # from the list of chains for each shift, the maximum chain is selected
+        index = max_chains.index(max(max_chains))  # selecting the index of the highest chain, which corresponds to the number of shifts that resulted in the highest chain
+        print("Optimal shift:", index)  # do not need to add 1 to the index number since the first element in the list corresponds to zero shifts and is at position zero
+        to_remove = shift - index  # calculates the difference between the max number of shifts requested and the optimal shift
+        for x in range(1, to_remove + 1):  # this will return the DNA sequences with the optimal number of shifts rather than with the max number of shifts requested in the 'shift' argument of the function. +1 is needed here since we have to account for 0 shifts
+            list_1.remove("-")
+            list_2.remove("-")
+        print(''.join(list_1))  # removing commas from each sequence and putting the lists into a string for easier visibility of the base pair matches
+        print(''.join(list_2))
+    elif shift == 0:  # this calculates the max chain when no sequence shifts are requested, following the same procedure as before
+        score = 0
+        for x in range(len(list_1)):
+            if list_1[x] == list_2[x]:
+                score += 1
+                chains_list.append(score)
+            else:
+                score = 0
+        print("Max chain:", max(chains_list))  # prints the max chain alone as a result of zero shifts
+        print(''.join(list_1))  # removing commas from each sequence and putting the lists into a string for easier visibility of the base pair matches
+        print(''.join(list_2))
+    else:  # tells the user that negative numbers cannot be supplied for the shift
+        print("Negative values cannot be accepted for 'shift'. Please supply a positive integer.")
 
 # # exceptions: could not find file; input is not a valid approach; input is not an integer; input cannot be negative;
 # # input must be greater than 0; DNA sequences are not the same length; Error: shift number cannot exceed the
 # # number of base pairs in the sequence. cannot accept decimal (type:float) values, function only accepts integers
 
+# need file exception: opening or saving a file, anything that deals with files
+# need exceptions for input values: wrong type
+
 # for max chain, subtract one point for each that does not match when going from one pair to the next
 
 # for inputs, define all in beginning and then add those as your args for the functions in your main function
+
+# original sequences used incase i need to troubleshoot:
+# GAAAGACTCCAACGTTAGGCGGACATCTGC
+# AATTCTGGTCATTCAGTTTATTCTCTGTGA
+
+
+# ask why this isnt working.
+def main():
+    file_1 = input("Type the file name of your first sequence: ")
+    file_2 = input("Type the file name of your second sequence: ")
+    shift = input("Set the maximum number of base pair shifts: ")
+    approach = input("Would you like to calculate the max score (1) or max chain (2)?: ")
+    if approach == 1:
+        max_score(shift)
+    elif approach == 2:
+        max_chain(shift)
+    else:
+        print("Please provide a valid approach (input 1 or 2).")
 
 ```
