@@ -1,8 +1,7 @@
 ```python
 
-########################################
-
 # Random DNA Sequence Generator that writes the new sequence to a file:
+# (This was not required for the project)
 
 from random import choice
 
@@ -24,28 +23,20 @@ def random_sequence_2(length):
         sequence += nucleotide
     file.write(sequence)
 
-# TA-DA! We can now put two .txt files containing random DNA sequences into our working directory.
+# TA-DA! This allowed us to put two .txt files containing random DNA sequences into our working directory.
 
-# Requesting inputs from user:
+# Reading in files and changing to a list that we can edit rather than editting the original file:
 
-file_1 = input("Type the file name of your first sequence: ")
-file_2 = input("Type the file name of your second sequence: ")
-shift = input("Set the maximum number of base pair shifts: ")
-approach = input("Would you like to calculate the max score (1) or max chain (2)?: ")
-
-# Reading in files and changing to a list, adding dashes to the list corresponding to the number of shifts requested
-# rather than editting the original file:
-
-def sequence1_to_list(file_1):
-    sequence_1_list = []
-    sequence_1 = open(file_1, 'r')
-    sequence_1_read = sequence_1.read()
-    sequence_1.close
+def sequence1_to_list(file_1):  # the list created from this function will be used to add shifts to the sequence
+    sequence_1_list = []  # creating an empty list which our comma-separated sequence will be put into
+    sequence_1 = open(file_1, 'r')  # openning the file, which the user will be asked to input the name of later in our main() function
+    sequence_1_read = sequence_1.read()  # reads the file into python
+    sequence_1.close  # closes the file since we have read it in
     for x in range(len(sequence_1_read)):
-        sequence_1_list.append(sequence_1_read[x])
+        sequence_1_list.append(sequence_1_read[x])  # adding each nucleotide from the sequence file into our empty list
     return sequence_1_list
 
-def sequence2_to_list(file_2):
+def sequence2_to_list(file_2):  # this function follows the same procedure as the previous one but for a second sequence file to be compared to the first
     sequence_2_list = []
     sequence_2 = open(file_2, "r")
     sequence_2_read = sequence_2.read()
@@ -163,21 +154,13 @@ def max_chain(shift):
 # need file exception: opening or saving a file, anything that deals with files
 # need exceptions for input values: wrong type
 
-# for max chain, subtract one point for each that does not match when going from one pair to the next
-
-# for inputs, define all in beginning and then add those as your args for the functions in your main function
-
-# original sequences used incase i need to troubleshoot:
-# GAAAGACTCCAACGTTAGGCGGACATCTGC
-# AATTCTGGTCATTCAGTTTATTCTCTGTGA
-
-
-# ask why this isnt working.
+# Main function that queries the user for their sequence file names, approach, and number of shifts.
+# depending on the input for approach, the function will either calculate the max score or max chain
 def main():
-    file_1 = input("Type the file name of your first sequence: ")
-    file_2 = input("Type the file name of your second sequence: ")
-    shift = input("Set the maximum number of base pair shifts: ")
-    approach = input("Would you like to calculate the max score (1) or max chain (2)?: ")
+    file_1 = input("Type the file name of your first sequence: ")  # asks the user to provide the name of their first sequence file
+    file_2 = input("Type the file name of your second sequence: ")  # asks the user to provide the name of their second sequence file
+    shift = int(input("Set the maximum number of base pair shifts: "))  # asks the user for the max number of shifts allowed, but we have to ensure python reads the input as an integer rather than a string
+    approach = int(input("Would you like to calculate the max score (1) or max chain (2)?: "))  # asks the user to select whether they want to calculate the max score or the max chain from the sequences they have provided. Again, me must convert the user's input to an integer
     if approach == 1:
         max_score(shift)
     elif approach == 2:
