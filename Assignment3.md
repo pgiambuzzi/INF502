@@ -164,13 +164,24 @@ def main():
                 print(periodic_table)
             else:
                 print("Please type a valid property: ")
-        elif option == 5:
-
-
-
-#fixes needed: option 2 needs to return "No element found for this specified property value" ONLY ONCE for when this is the case. Right now it keeps returning that statement for each key (more than once)
-
-# When updating, upated value is added to the end of the dictionary rather than put in its original position but I dont think that should matter
+        elif option == 5:  #exporting the periodic table as a .txt file
+            file = open("periodic_table.txt", "x")
+            file.write(str(periodic_table))
+            file.close
+        elif option == 6:
+            periodic_table = {}
+            new_table = input("Type the name of the file you want to upload: ")
+            file = open(new_table)
+            for line in file:
+                key, value = line.split()
+            periodic_table[key] = value
+            print(a_dictionary)
+        else:
+            print("Error: option not available. Please select an option from the menu")
+            break
+        option = int(input("Please select an option: "))
+    else:
+        print("You have exited the program")
 
 
 ```
