@@ -88,20 +88,14 @@ def wallet():
 
 # Problem 2:
 
-#Nested dictionary
-# symbol, name, atomic number, row, and column
-
-periodic_table = {"sybmol": {"name": "", "number": "", "row": "", "column": ""}}
-
 def print_menu():
     print("1. Search an element by symbol\n2. Search by a property\n3. Enter a new element manually\n4. Change the properties of an element\n5. Export periodic table as a JSON file\n6. Load periodic table from JSON file\n7. Exit the program")
 
 def get_element(periodic_table, symbol):
     return periodic_table.get(symbol, -1)  #purpose of using -1 is to get the last value in the dictionary, because the -1 position of a list is technically the last value in a list.
 
-
 def main():
-    periodic_table = {"H": {"name": "Hydrogen", "number": 1, "row": 2, "column": 3},  "He": {"name": "Helium", "number": 4, "row": 5, "column": 6}}
+    periodic_table = {}
     print_menu()
     option = int(input("Please select an option: "))
     while option != 7:
@@ -165,23 +159,21 @@ def main():
             else:
                 print("Please type a valid property: ")
         elif option == 5:  #exporting the periodic table as a .txt file
-            file = open("periodic_table.txt", "x")
+            file_name = input("Type a name for your file: ")
+            file = open(file_name, "w")
             file.write(str(periodic_table))
-            file.close
+            file.close()
         elif option == 6:
-            periodic_table = {}
             new_table = input("Type the name of the file you want to upload: ")
-            file = open(new_table)
-            for line in file:
-                key, value = line.split()
-            periodic_table[key] = value
-            print(a_dictionary)
+            file = open(new_table, "r")
+            periodic_table = eval(file.read())
+            print(periodic_table)
+            file.close()
         else:
             print("Error: option not available. Please select an option from the menu")
             break
         option = int(input("Please select an option: "))
     else:
         print("You have exited the program")
-
 
 ```
