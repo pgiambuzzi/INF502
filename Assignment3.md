@@ -54,16 +54,21 @@ Make sure you do the appropriate communication with the user to get the necessar
 
 # Problem 1:
 
+# Approach explanation: the string values that the user inputs into the wallet can be turned into a list using .string
+# which allows us to index the list and calculate maximums and minimums (and do other mathematical procedures).
+# After the input strings are turned into integers, we can use the simple max(), min(), and Sum() functions to find the
+# fattest and skinniest wallets, as well as the total and amount in dimes (by dividing total by 10).
+
 def wallet():
-    values = input("Provide cash values for respective wallets (separate the values by space): ")
-    wallets = values.split()
+    values = input("Provide cash values for respective wallets (separate the values by space): ")  # input values must be separated by space for .split to work
+    wallets = values.split()  # puts input strings into a list
     for i in range(len(wallets)):
-        wallets[i] = int(wallets[i])
-    fattest = max(wallets)
-    skinniest = min(wallets)
-    total = sum(wallets)
-    dimes = total/10
-    print("The fattest wallet has", fattest, "in it.")
+        wallets[i] = int(wallets[i])  # turns each member of the list into an integer
+    fattest = max(wallets)  # calculates the highest wallet value
+    skinniest = min(wallets)  # calculates the lowest wallet value
+    total = sum(wallets)  # adds every wallet value together to get the total
+    dimes = total/10  # divides the total by 10 to see how many dimes the total value is worth
+    print("The fattest wallet has", fattest, "in it.")  # in the following lines, the object that we saved the result to for respective mathematical operations is printed with an explanation for concisions's sake
     print("The skinniest wallet has", skinniest, "in it.")
     print("All together, these wallets have a total of", total, "in them.")
     print("All together, the total value of these wallets is worth", dimes, "dimes.")
@@ -88,92 +93,141 @@ def wallet():
 
 # Problem 2:
 
-def print_menu():
+# Approach explanation: To make the main function a bit more concise, I created a function that prints the menu and one
+# that gets the symbol key of the dictionary outside the main function. They then appear alone in the main function for
+# more a more concise looking main function. The while loop was used so that each time the user is done with an option,
+# the program will again prompt them with "Select an option" until they choose to exit the program. I separated the
+# if/elif/else arguments by option number. Throughout the function, each user input is assigned to a variable, and those
+# variables are used to see which property or element is being referenced.
+
+def print_menu():  #prints the options to be selected in the program
     print("1. Search an element by symbol\n2. Search by a property\n3. Enter a new element manually\n4. Change the properties of an element\n5. Export periodic table as a JSON file\n6. Load periodic table from JSON file\n7. Exit the program")
 
-def get_element(periodic_table, symbol):
+def get_element(periodic_table, symbol):  # retrieves the key and values for the corresponding input given
     return periodic_table.get(symbol, -1)  #purpose of using -1 is to get the last value in the dictionary, because the -1 position of a list is technically the last value in a list.
 
 def main():
-    periodic_table = {}
+    periodic_table = {}  # creates an empty dictionary which we will populate uaing the options from the menu
     print_menu()
-    option = int(input("Please select an option: "))
+    #option = int(input("Please select an option: "))  #turns the user's string input into an integer so it is compatable with the options in the while loop
+    while True: #creates an infinite loop
+        try:
+            option = int(input("Please select an option: "))  # converts the input into an integer
+            break  # stops the infinite loop if option is entered correctly
+        except ValueError:  # directs the ValueError to print a specific message if the input is a string
+            print("Error: Please provide an integer from 1 to 7, no strings allowed.")
     while option != 7:
         if option == 1:
             symbol = input("Please type an element symbol to view an element's information: ")
-            print(get_element(periodic_table, symbol))
+            print(get_element(periodic_table, symbol))  # will return the values corresponding to the key given by the user
         elif option == 2:
             prop = input("Please enter a property: ")
             if prop == "name":
-                name = input("Please enter an element name: ")
                 for key in periodic_table:
-                    if periodic_table[key].get("name") == name:
-                        print(key)
+                    print(periodic_table[key].get("name"))  # prints the value corresponding to the name value for the element provided
             elif prop == "number":
-                number = int(input("Please type an atomic number: "))
                 for key in periodic_table:
-                    if periodic_table[key].get("number") == number:
-                        print(key)
+                    print(periodic_table[key].get("number"))  # prints the value corresponding to the number value for the element provided
             elif prop == "row":
-                row = int(input("Please type a row number: "))
                 for key in periodic_table:
-                    if periodic_table[key].get("row") == row:
-                        print(key)
+                    print(periodic_table[key].get("row"))  # prints the value corresponding to the row value for the element provided
             elif prop == "column":
-                column = int(input("Please type a column number: "))
                 for key in periodic_table:
-                    if periodic_table[key].get("column") == column:
-                        print(key)
-        elif option == 3:
+                    print(periodic_table[key].get("column"))  # prints the value corresponding to the column value for the element provided
+        elif option == 3:  # this will ask the user for all the info the program will need to create a new, complete dictionary entry
             new_symbol = input("Provide a symbol for your element: ")
             new_name = input("Provide a name for your element: ")
             new_number = int(input("Provide an atomic number for your element: "))
             new_row = int(input("Provide a row number for your element: "))
             new_column = int(input("Provide a column number for your element: "))
-            new_properties = {"name": new_name, "number": new_number, "row": new_row, "column": new_column}
-            periodic_table.setdefault(new_symbol, new_properties)
+            new_properties = {"name": new_name, "number": new_number, "row": new_row, "column": new_column}  # the user input values are assigned to the corresponding keys of a new entry
+            periodic_table.setdefault(new_symbol, new_properties)  # this will create a new dictionary entry using the properties given above
             print(periodic_table)
         elif option == 4:
             element_change = input("Type the symbol of the element you would like to change: ")
             property_change = input("Type the property you would like to change: ")
             if property_change == "name":
                 name_change = input("Type a new name: ")
-                periodic_table[element_change].pop("name")
-                periodic_table[element_change].update({"name": name_change})
+                periodic_table[element_change].pop("name")  # .pop will remove the existing name of the element
+                periodic_table[element_change].update({"name": name_change})  # the removed name is then replaced with the user input
                 print(periodic_table)
             elif property_change == "number":
                 number_change = int(input("Type a new atomic number: "))
-                periodic_table[element_change].pop("number")
-                periodic_table[element_change].update({"number": number_change})
+                periodic_table[element_change].pop("number")  # .pop will remove the existing number of the element
+                periodic_table[element_change].update({"number": number_change})  # the removed number is then replaced with the user input
                 print(periodic_table)
             elif property_change == "row":
                 row_change = int(input("Type a new row number: "))
-                periodic_table[element_change].pop("row")
-                periodic_table[element_change].update({"row": row_change})
+                periodic_table[element_change].pop("row")  # .pop will remove the existing row of the element
+                periodic_table[element_change].update({"row": row_change})  # the removed row is then replaced with the user input
                 print(periodic_table)
             elif property_change == "column":
-                periodic_table[element_change].pop("column")
                 column_change = int(input("Type a new column number: "))
-                periodic_table[element_change].update({"column": column_change})
+                periodic_table[element_change].pop("column")  # .pop will remove the existing column of the element
+                periodic_table[element_change].update({"column": column_change})  # the removed column is then replaced with the user input
                 print(periodic_table)
             else:
                 print("Please type a valid property: ")
-        elif option == 5:  #exporting the periodic table as a .txt file
-            file_name = input("Type a name for your file: ")
-            file = open(file_name, "w")
-            file.write(str(periodic_table))
-            file.close()
-        elif option == 6:
-            new_table = input("Type the name of the file you want to upload: ")
-            file = open(new_table, "r")
-            periodic_table = eval(file.read())
+        elif option == 5:  # exporting the periodic table as a .json file
+            file_name = input("Type a name for your file: ")  # user names the file without .json written
+            file_json = file_name + ".json"  # adds .json to the end of the file name provided by the user
+            file = open(file_json, "w")  # opens a new file with the given name with permission to write
+            file.write(str(periodic_table))  # write the file as a string of the periodic table dictionary
+            file.close()  # closes the file so it can be stored while still in the program
+        elif option == 6:  # importing a periodic table as a .json file
+            new_table = input("Type the name of the file you want to upload: ")  # user gives the name of the file in their library without writing .json
+            new_json = new_table + ".json"  # adds .json to the end of the file name provided by the user
+            file = open(new_json, "r")  # opens the existing file with the given name with permission to read
+            periodic_table = eval(file.read())  #  using eval() to turn the file from a string into a dictionary while reading
             print(periodic_table)
-            file.close()
+            file.close()  # closes the file so it can be stored while still in the program
         else:
-            print("Error: option not available. Please select an option from the menu")
-            break
-        option = int(input("Please select an option: "))
+            print("Error: option not available. Please select an option from the menu")  # if the option typed by the user is an integer not equal to 1, 2, 3, 4, 5, 6, or 7, it will tell the user the option is not valid
+            break  # stops the error message from repeating infinitely
+        option = int(input("Please select an option: "))  # queries the user to select an option again after each time they complete an option. This will keep happening unitl the user presses 7 to exit.
     else:
-        print("You have exited the program")
+        print("You have exited the program")  # if the user types 7, they will get this message and the program will be closes. To re-open, they will have to type main() again. This will refresh the dictionary to an empty dictionary.
+
+# Example:
+
+# >>> main()
+# 1. Search an element by symbol
+# 2. Search by a property
+# 3. Enter a new element manually
+# 4. Change the properties of an element
+# 5. Export periodic table as a JSON file
+# 6. Load periodic table from JSON file
+# 7. Exit the program
+# Please select an option: >? 6
+# Type the name of the file you want to upload: >? chgahg
+# {'C': {'name': 'Carbon', 'number': 1, 'row': 2, 'column': 3}, 'H': {'name': 'Hydrogen', 'number': 4, 'row': 5, 'column': 6}, 'Ga': {'name': 'Gallium', 'number': 1, 'row': 2, 'column': 3}, 'Hg': {'name': 'Mercury', 'number': 4, 'row': 5, 'column': 6}}
+# Please select an option: >? 1
+# Please type an element symbol to view an element's information: >? C
+# {'name': 'Carbon', 'number': 1, 'row': 2, 'column': 3}
+# Please select an option: >? 2
+# Please enter a property: >? name
+# Carbon
+# Hydrogen
+# Gallium
+# Mercury
+# Please select an option: >? 3
+# Provide a symbol for your element: >? Xe
+# Provide a name for your element: >? Xenon
+# Provide an atomic number for your element: >? 45
+# Provide a row number for your element: >? 23
+# Provide a column number for your element: >? 12
+# {'C': {'name': 'Carbon', 'number': 1, 'row': 2, 'column': 3}, 'H': {'name': 'Hydrogen', 'number': 4, 'row': 5, 'column': 6}, 'Ga': {'name': 'Gallium', 'number': 1, 'row': 2, 'column': 3}, 'Hg': {'name': 'Mercury', 'number': 4, 'row': 5, 'column': 6}, 'Xe': {'name': 'Xenon', 'number': 45, 'row': 23, 'column': 12}}
+# Please select an option: >? 4
+# Type the symbol of the element you would like to change: >? Xe
+# Type the property you would like to change: >? number
+# Type a new atomic number: >? 42
+# {'C': {'name': 'Carbon', 'number': 1, 'row': 2, 'column': 3}, 'H': {'name': 'Hydrogen', 'number': 4, 'row': 5, 'column': 6}, 'Ga': {'name': 'Gallium', 'number': 1, 'row': 2, 'column': 3}, 'Hg': {'name': 'Mercury', 'number': 4, 'row': 5, 'column': 6}, 'Xe': {'name': 'Xenon', 'row': 23, 'column': 12, 'number': 42}}
+# Please select an option: >? 5
+# Type a name for your file: >? chgahgxe
+# Please select an option: >? 6
+# Type the name of the file you want to upload: >? chgahgxe
+# {'C': {'name': 'Carbon', 'number': 1, 'row': 2, 'column': 3}, 'H': {'name': 'Hydrogen', 'number': 4, 'row': 5, 'column': 6}, 'Ga': {'name': 'Gallium', 'number': 1, 'row': 2, 'column': 3}, 'Hg': {'name': 'Mercury', 'number': 4, 'row': 5, 'column': 6}, 'Xe': {'name': 'Xenon', 'row': 23, 'column': 12, 'number': 42}}
+# Please select an option: >? 7
+# You have exited the program
 
 ```
