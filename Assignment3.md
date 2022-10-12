@@ -50,6 +50,12 @@ To populate your dictionary with data, provide a menu of options to the users:
 
 Make sure you do the appropriate communication with the user to get the necessary information to complete each step.
 
+
+link to code for Problem 1: [wallet.py](https://github.com/pgiambuzzi/INF502/blob/main/code/wallet.py)
+
+link to code for Problem 2: [periodic_table.py](https://github.com/pgiambuzzi/INF502/blob/main/code/periodic_table.py)
+
+
 ```python
 
 # Problem 1:
