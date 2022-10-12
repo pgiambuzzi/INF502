@@ -119,6 +119,8 @@ def main():
         if option == 1:
             symbol = input("Please type an element symbol to view an element's information: ")
             print(get_element(periodic_table, symbol))  # will return the values corresponding to the key given by the user
+            if symbol not in periodic_table:
+                print("Not available. Try again.")  # will tell the user if the symbol they typed is not in the periodic table and will prompt them to start over
         elif option == 2:
             prop = input("Please enter a property: ")
             if prop == "name":
@@ -133,6 +135,8 @@ def main():
             elif prop == "column":
                 for key in periodic_table:
                     print(periodic_table[key].get("column"))  # prints the value corresponding to the column value for the element provided
+            else:
+                print("Not available. Try again.")  # will tell the user if the property they typed is not valid and will prompt them to start over
         elif option == 3:  # this will ask the user for all the info the program will need to create a new, complete dictionary entry
             new_symbol = input("Provide a symbol for your element: ")
             new_name = input("Provide a name for your element: ")
@@ -166,7 +170,7 @@ def main():
                 periodic_table[element_change].update({"column": column_change})  # the removed column is then replaced with the user input
                 print(periodic_table)
             else:
-                print("Please type a valid property: ")
+                print("Not available. Try again.")  # will tell the user if the property they typed is not valid and will prompt them to start over
         elif option == 5:  # exporting the periodic table as a .json file
             file_name = input("Type a name for your file: ")  # user names the file without .json written
             file_json = file_name + ".json"  # adds .json to the end of the file name provided by the user
@@ -185,7 +189,9 @@ def main():
             break  # stops the error message from repeating infinitely
         option = int(input("Please select an option: "))  # queries the user to select an option again after each time they complete an option. This will keep happening unitl the user presses 7 to exit.
     else:
-        print("You have exited the program")  # if the user types 7, they will get this message and the program will be closes. To re-open, they will have to type main() again. This will refresh the dictionary to an empty dictionary.
+        print("You have exited the program")  # if the user types 7, they will get this message and the program will be closes. To re-open, they will have to type 
+        
+main()
 
 # Example:
 
