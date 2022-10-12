@@ -168,31 +168,33 @@ def main():
     else:
         print("Please provide a valid approach (input 1 or 2).")
 
-#Example 1:
-
 main()
-Type the file name of your first sequence: >? sequence_1.txt
-Type the file name of your second sequence: >? sequence_2.txt
-Set the maximum number of base pair shifts: >? 15
-Would you like to calculate the max score (1) or max chain (2)?: >? 1
-Max score: 18
-Optimal shift: 11
------------TTTCCCTGCTAATACGATAACGACGCCACTGGAGGACCGTTAAAAATTTA
-ACTCTAAGAGTCTAGGCTGGGACTAAAGTAAAAGCGGCGATAGTGGAGTT-----------
 
-# Example 2:
+# Example 1:
 
-main()
-Type the file name of your first sequence: >? sequence_1.txt
-Type the file name of your second sequence: >? sequence_2.txt
-Set the maximum number of base pair shifts: >? 15
-Would you like to calculate the max score (1) or max chain (2)?: >? 2
-Max chain: 5
-Optimal shift: 14
---------------TTTCCCTGCTAATACGATAACGACGCCACTGGAGGACCGTTAAAAATTTA
-ACTCTAAGAGTCTAGGCTGGGACTAAAGTAAAAGCGGCGATAGTGGAGTT--------------
-
-Example 3:
+# >>> main()
+# Type the file name of your first sequence: >? sequence_1.txt
+# Type the file name of your second sequence: >? sequence_2.txt
+# Set the maximum number of base pair shifts: >? 15
+# Would you like to calculate the max score (1) or max chain (2)?: >? 1
+# Max score: 18
+# Optimal shift: 11
+# -----------TTTCCCTGCTAATACGATAACGACGCCACTGGAGGACCGTTAAAAATTTA
+# ACTCTAAGAGTCTAGGCTGGGACTAAAGTAAAAGCGGCGATAGTGGAGTT-----------
+# 
+# # Example 2:
+# 
+# >>> main()
+# Type the file name of your first sequence: >? sequence_1.txt
+# Type the file name of your second sequence: >? sequence_2.txt
+# Set the maximum number of base pair shifts: >? 15
+# Would you like to calculate the max score (1) or max chain (2)?: >? 2
+# Max chain: 5
+# Optimal shift: 14
+# --------------TTTCCCTGCTAATACGATAACGACGCCACTGGAGGACCGTTAAAAATTTA
+# ACTCTAAGAGTCTAGGCTGGGACTAAAGTAAAAGCGGCGATAGTGGAGTT--------------
+# 
+# Example 3:
 
 
 ```
