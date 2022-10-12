@@ -109,7 +109,6 @@ def get_element(periodic_table, symbol):  # retrieves the key and values for the
 def main():
     periodic_table = {}  # creates an empty dictionary which we will populate uaing the options from the menu
     print_menu()
-    #option = int(input("Please select an option: "))  #turns the user's string input into an integer so it is compatable with the options in the while loop
     while True: #creates an infinite loop
         try:
             option = int(input("Please select an option: "))  # converts the input into an integer
