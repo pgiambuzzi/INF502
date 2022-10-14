@@ -205,24 +205,24 @@ main()
 
 
 # Example 1:
-
+#
 # >>> main()
+# Would you like to calculate the max score (1) or max chain (2)?: >? 1
+# Set the maximum number of base pair shifts: >? 15
 # Type the file name of your first sequence: >? sequence_1
 # Type the file name of your second sequence: >? sequence_2
-# Set the maximum number of base pair shifts: >? 15
-# Would you like to calculate the max score (1) or max chain (2)?: >? 1
 # Max score: 18
 # Optimal shift: 11
 # -----------TTTCCCTGCTAATACGATAACGACGCCACTGGAGGACCGTTAAAAATTTA
 # ACTCTAAGAGTCTAGGCTGGGACTAAAGTAAAAGCGGCGATAGTGGAGTT-----------
 #
-# # Example 2:
+# Example 2:
 #
 # >>> main()
+# Would you like to calculate the max score (1) or max chain (2)?: >? 2
+# Set the maximum number of base pair shifts: >? 15
 # Type the file name of your first sequence: >? sequence_1
 # Type the file name of your second sequence: >? sequence_2
-# Set the maximum number of base pair shifts: >? 15
-# Would you like to calculate the max score (1) or max chain (2)?: >? 2
 # Max chain: 5
 # Optimal shift: 14
 # --------------TTTCCCTGCTAATACGATAACGACGCCACTGGAGGACCGTTAAAAATTTA
