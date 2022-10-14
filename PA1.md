@@ -1,18 +1,17 @@
+Explantion and Hurdles:
+I first created a function that takes a user sequence file and puts it into a list, a function that calculates the
+max number of matches based on the shift number provided by the user, and a function that does the same but for
+calculating the max chain.  All of these functions were then put into a main function for more concise code.
+One of the hurdles I had to overcome had to do with understanding the concept of lists. Once I realized that it is
+possible to index lists rather than trying to select a nucleotide from a string, it became much easier to figure out
+how to tell the user which shift resulted in the maximum chain or score. I realized that each result from a for loop
+could be added to a list, and then that list could be indexed. Another chanallange was getting the syntax of the for
+loops correct. Having if-else statements inside of for loops meant I had to be precise about where I put the commands
+that would yield a result, like a print() or .append command. It also took time to think of as many exceptions as I
+could. Syntax overall was a big hurdle.  When doing exception handling, I had to make sure that the variables the
+exceptions were referring to were defined, and that the exceptions occurred in the appropriate order.
+
 ```python
-
-# Explantion and Hurdles:
-# I first created a function that takes a user sequence file and puts it into a list, a function that calculates the
-# max number of matches based on the shift number provided by the user, and a function that does the same but for
-# calculating the max chain.  All of these functions were then put into a main function for more concise code.
-# One of the hurdles I had to overcome had to do with understanding the concept of lists. Once I realized that it is
-# possible to index lists rather than trying to select a nucleotide from a string, it became much easier to figure out
-# how to tell the user which shift resulted in the maximum chain or score. I realized that each result from a for loop
-# could be added to a list, and then that list could be indexed. Another chanallange was getting the syntax of the for
-# loops correct. Having if-else statements inside of for loops meant I had to be precise about where I put the commands
-# that would yield a result, like a print() or .append command. It also took time to think of as many exceptions as I
-# could. Syntax overall was a big hurdle.  When doing exception handling, I had to make sure that the variables the
-# exceptions were referring to were defined, and that the exceptions occurred in the appropriate order.
-
 
 # Random DNA Sequence Generator that writes the new sequence to a file:
 # (This was not required for the project)
@@ -59,10 +58,10 @@ def max_score():
         shift = int(input("Set the maximum number of base pair shifts: "))  # asks the user for the max number of shifts allowed, but we have to ensure python reads the input as an integer rather than a string
     except ValueError:  # a ValueError would typically be raised if the input for this were a string, float, or other non-integer type
         print("Invalid input type. Please try again and input an integer.")  # So when this Value error is raised, the program prints this message
-        main()
+        return
     if shift < 0:
         print("Negative values cannot be accepted for 'shift'. Please supply a positive integer.")
-        main()
+        return
     global list_1, list_2  # avoids us running into an UnboundLocalError when list_1 and list_2 are defined
     file_1 = input("Type the file name of your first sequence: ") + ".txt"  # asks the user for the name of the first sequence file they would like to use
     file_2 = input("Type the file name of your second sequence: ") + ".txt"  # asks the user for the name of the second sequence file they would like to use
@@ -71,10 +70,10 @@ def max_score():
         list_2 = sequence2_to_list(file_2)  # loading the user input file for sequence 2 into a list
     except FileNotFoundError:
         print("File not found. Try again.")  # if the file typed by the user does not match any existing files, this message will pop up
-        main()
+        return
     if len(list_1) != len(list_2): #  if the the two sequences provided are not of the same length, they should not be compared and this message will appear
         print("Error: the sequences being compared must have the same number of nucleotides (same length). Try again.")
-        main()
+        return
     if shift >= len(list_1):  # rejects a shift input equal to or greater than the number of nucleotides in a given sequence because otherwise there will be no nucleotides lining up between sequences to compare
         print("Number of shifts cannot equal or exceed the number of nucleotides in the sequence.")
     elif shift > 0: #when a number of shifts is provided, the following loop is run
@@ -123,10 +122,10 @@ def max_chain():
         shift = int(input("Set the maximum number of base pair shifts: "))  # asks the user for the max number of shifts allowed, but we have to ensure python reads the input as an integer rather than a string
     except ValueError:
         print("Invalid input type. Please try again and input an integer.")
-        main()
+        return
     if shift < 0:
         print("Negative values cannot be accepted for 'shift'. Please supply a positive integer.")
-        main()
+        return
     global list_1, list_2  # avoids us running into an UnboundLocalError when list_1 and list_2 are defined
     file_1 = input("Type the file name of your first sequence: ") + ".txt"  # asks the user for the name of the first sequence file they would like to use
     file_2 = input("Type the file name of your second sequence: ") + ".txt"  # asks the user for the name of the second sequence file they would like to use
@@ -135,12 +134,12 @@ def max_chain():
         list_2 = sequence2_to_list(file_2)  # loading the user input file for sequence 2 into a list
     except FileNotFoundError:
         print("File not found. Try again.")  # if the file typed does not match any existing files, this message will pop up
-        main()
+        return
     list_1 = sequence1_to_list(file_1)  # loading the user input file for sequence 1 into a list
     list_2 = sequence2_to_list(file_2)  # loading the user input file for sequence 2 into a list
     if len(list_1) != len(list_2):  # if the the two sequences provided are not of the same length, they should not be compared and this message will appear
         print("Error: the sequences being compared must have the same number of nucleotides (same length). Try again.")
-        main()
+        return
     if shift >= len(list_1):  # rejects a shift input equal to or greater than the number of nucleotides in a given sequence because otherwise there will be no nucleotides lining up between sequences to compare
         print("Number of shifts cannot equal or exceed the number of nucleotides in the sequence.")
     elif shift > 0:  # when a number of shifts is provided, the following loop is run
@@ -193,14 +192,14 @@ def main():
         approach = int(input("Would you like to calculate the max score (1) or max chain (2)?: "))  # asks the user to select whether they want to calculate the max score or the max chain from the sequences they have provided. Again, me must convert the user's input to an integer
     except ValueError:
         print("Invalid input type. Please try again and input an integer.")
-        main()
+        return
     if approach == 1:
         max_score()
     elif approach == 2:
         max_chain()
     else:
         print("Please provide a valid approach (input 1 or 2).")
-        main()
+        return
 
 main()
 
