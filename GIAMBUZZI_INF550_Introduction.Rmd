@@ -1,0 +1,15 @@
+---
+title: "GIAMBUZZI_INF550_Introduction"
+author: "Perry Giambuzzi"
+date: "2023-09-11"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Hello! My name is Perry Giambuzzi and I am a second year Ecoinformatics PhD
+# student in Andrew Richardson's lab. I am interested in using phenology data 
+# from PhenoCam, NEON, and MODIS to determine the relative influence of drivers
+# of autumn phenology across deciduous broadleaf forests. 
